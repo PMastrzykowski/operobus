@@ -41,35 +41,41 @@ class Landing extends React.Component {
     }
     this.enter = new TimelineLite();
   }
+  loadImage = (src) => {
+    return new Promise((resolve, reject) => {
+      let img = new Image()
+      img.onload = () => resolve(img.height)
+      img.onerror = resolve()
+      img.src = src
+    })
+  }
   onEnter = () => {
     let lineMain1length = this.lineMain1.getTotalLength();
     let lineMain2length = this.lineMain2.getTotalLength();
     let lineMain3length = this.lineMain3.getTotalLength();
-    this.enter
-      .set(document.body, { 'overflow': 'hidden' })
-      .set(this.lineMain1, { 'stroke-dashoffset': lineMain1length, 'stroke-dasharray': lineMain1length })
-      .set(this.lineMain2, { 'stroke-dashoffset': lineMain2length, 'stroke-dasharray': lineMain2length })
-      .set(this.lineMain3, { 'stroke-dashoffset': lineMain3length, 'stroke-dasharray': lineMain3length })
-      .call(() => {
-        this.state.URLs.map((URL) => {
-          var img = new Image();
-          img.src = URL;
-          return img;
-        });
-      })
-      .to(this.loader, 0.6, { opacity: 0 }, 0.6)
-      .set(document.body, { 'overflow': 'scroll' })
-      .set(this.loader, { 'pointer-events': 'none' })
-      .to(this.lineMain1, 1.5, { 'stroke-dashoffset': 0 }, '=-0.1')
-      .to(this.lineMain2, 1.5, { 'stroke-dashoffset': 0 }, '=-1.5')
-      .to(this.lineMain3, 1.5, { 'stroke-dashoffset': 0 }, '=-1.5')
-      .fromTo(this.mainBottom, 1, { 'opacity': 0, y: 50 }, { 'opacity': 1, y: 0 }, '=-1.5')
-      .fromTo(this.mainText1, 1, { 'opacity': 0, x: -50 }, { 'opacity': 1, x: 0 }, '=-1')
-      .fromTo(this.mainText2, 1, { 'opacity': 0, x: 50 }, { 'opacity': 1, x: 0 }, '=-0.8')
-      .fromTo(this.mainText3, 1, { 'opacity': 0, x: -30 }, { 'opacity': 1, x: 0 }, '=-0.8')
-      .fromTo(this.mainBottomLogo, 0.6, { 'opacity': 0 }, { 'opacity': 1 }, '=-1')
-      .fromTo(this.mainScrollWrapper, 0.6, { 'opacity': 0, y: 20 }, { 'opacity': 1, y: 0 }, '=-0.6')
-      .fromTo(this.header, 0.6, { 'opacity': 0, y: -20 }, { 'opacity': 1, y: 0 }, '=-0.6')
+    document.body.style.overflow = 'hidden'
+    this.state.URLs.forEach(async (url, i) => {
+      await this.loadImage(url);
+      if (i === this.state.URLs.length - 1) {
+        this.enter
+          .set(this.lineMain1, { 'stroke-dashoffset': lineMain1length, 'stroke-dasharray': lineMain1length })
+          .set(this.lineMain2, { 'stroke-dashoffset': lineMain2length, 'stroke-dasharray': lineMain2length })
+          .set(this.lineMain3, { 'stroke-dashoffset': lineMain3length, 'stroke-dasharray': lineMain3length })
+          .to(this.loader, 0.6, { opacity: 0 }, 0.6)
+          .set(document.body, { 'overflow': 'scroll' })
+          .set(this.loader, { 'pointer-events': 'none' })
+          .to(this.lineMain1, 1.5, { 'stroke-dashoffset': 0 }, '=-0.1')
+          .to(this.lineMain2, 1.5, { 'stroke-dashoffset': 0 }, '=-1.5')
+          .to(this.lineMain3, 1.5, { 'stroke-dashoffset': 0 }, '=-1.5')
+          .fromTo(this.mainBottom, 1, { 'opacity': 0, y: 50 }, { 'opacity': 1, y: 0 }, '=-1.5')
+          .fromTo(this.mainText1, 1, { 'opacity': 0, x: -50 }, { 'opacity': 1, x: 0 }, '=-1')
+          .fromTo(this.mainText2, 1, { 'opacity': 0, x: 50 }, { 'opacity': 1, x: 0 }, '=-0.8')
+          .fromTo(this.mainText3, 1, { 'opacity': 0, x: -30 }, { 'opacity': 1, x: 0 }, '=-0.8')
+          .fromTo(this.mainBottomLogo, 0.6, { 'opacity': 0 }, { 'opacity': 1 }, '=-1')
+          .fromTo(this.mainScrollWrapper, 0.6, { 'opacity': 0, y: 20 }, { 'opacity': 1, y: 0 }, '=-0.6')
+          .fromTo(this.header, 0.6, { 'opacity': 0, y: -20 }, { 'opacity': 1, y: 0 }, '=-0.6')
+      }
+    })
   }
   componentDidMount = () => {
     this.onEnter();
@@ -81,7 +87,7 @@ class Landing extends React.Component {
           <img src={`./logo-color.svg`} alt={`Logo`} />
         </div>
         <header id={`header`} ref={e => this.header = e}>
-          <div className={`header-inner ${this.state.mainBottom? 'white':''}`}>
+          <div className={`header-inner ${this.state.mainBottom ? 'white' : ''}`}>
             <div className={`header-inner-left`}>
               <button className={`header-button`}></button>
             </div>
@@ -116,17 +122,17 @@ class Landing extends React.Component {
               </div>
             </div>
           </div>
-            <Waypoint
-              onEnter={() => this.setState({
-                mainBottom: true
-              })}
-              onLeave={() => this.setState({
-                mainBottom: false
-              })}
-            >
-          <div className={`main-bottom`} ref={e => this.mainBottom = e}>
-            <img src={`./logo-white.svg`} alt={`Logo`} ref={e => this.mainBottomLogo = e} />
-          </div>
+          <Waypoint
+            onEnter={() => this.setState({
+              mainBottom: true
+            })}
+            onLeave={() => this.setState({
+              mainBottom: false
+            })}
+          >
+            <div className={`main-bottom`} ref={e => this.mainBottom = e}>
+              <img src={`./logo-white.svg`} alt={`Logo`} ref={e => this.mainBottomLogo = e} />
+            </div>
           </Waypoint>
         </section>
         <section id='project'>
@@ -372,9 +378,9 @@ class Landing extends React.Component {
               aboutVerticalLine: false
             })}
           >
-            <div className={`vertical-line ${this.state.aboutVerticalLine? 'visible':''}`} ref={e => this.aboutVerticalLine = e}>
-            <div className={`vertical-line-inner`}/>
-              </div>
+            <div className={`vertical-line ${this.state.aboutVerticalLine ? 'visible' : ''}`} ref={e => this.aboutVerticalLine = e}>
+              <div className={`vertical-line-inner`} />
+            </div>
           </Waypoint>
         </section >
         <section id='sponsors'>
