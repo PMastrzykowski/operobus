@@ -96,7 +96,7 @@ class Landing extends React.Component {
     }));
   }
   handleMenuClick = (to) => {
-    document.body.style.overflow = this.state.isMenuOpen ? 'scroll' : 'hidden';
+    document.body.style.overflow = 'scroll';
     this.setState({
       isMenuOpen: false
     });
