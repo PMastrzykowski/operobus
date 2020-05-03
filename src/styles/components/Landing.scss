@@ -20,12 +20,76 @@
         top: 0;
         left: 0;
         width: 100%;
+        margin: 0 auto;
+        transition: background-color 0.3s ease-in;
+        &.white {
+            background-color: $color-1;
+        }
         .header-inner {
             @include flexbox();
             @include justify-content(space-between);
             width: 100%;
             max-width: 2000px;
             margin: 0 auto;
+            &.open {
+                .header-inner-open-mobile {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                .mobile {
+                    .nav-icon:before {
+                        transform: translateY(12px) rotate(135deg);
+                    }
+
+                    .nav-icon:after {
+                        transform: translateY(-12px) rotate(-135deg);
+                    }
+
+                    .nav-icon div {
+                        transform: scale(0);
+                    }
+                }
+            }
+            .mobile {
+                display: none;
+                .header-button {
+                    padding: 10px;
+                }
+                .nav-icon {
+                    margin: 1em;
+                    width: 40px;
+                }
+
+                .nav-icon:after,
+                .nav-icon:before,
+                .nav-icon div {
+                    background-color: $color-2;
+                    content: "";
+                    display: block;
+                    height: 5px;
+                    margin: 7px 0;
+                    transition: all 0.2s ease-in-out;
+                }
+            }
+            .header-inner-open-mobile {
+                @include flexbox();
+                @include flex-direction(column);
+                @include justify-content(center);
+                @include align-items(center);
+                pointer-events: none;
+                opacity: 0;
+                background-color: #fffffff0;
+                position: absolute;
+                height: calc(100vh - 69px);
+                top: 69px;
+                left: 0;
+                width: 100%;
+                transition: opacity 0.2s ease-in;
+                .header-button {
+                    width: 100%;
+                    font-size: 20px;
+                }
+            }
             &.white {
                 .header-inner-left,
                 .header-inner-right {
@@ -38,6 +102,7 @@
     }
     .header-button {
         padding: 25px;
+        box-sizing: border-box;
         font-size: 10px;
         text-transform: uppercase;
         letter-spacing: 2px;
@@ -106,6 +171,8 @@
     #why,
     #sponsors,
     #about {
+        box-sizing: border-box;
+        padding: 100px 0 0 0;
         width: 100%;
         position: relative;
         .section-content {
@@ -136,14 +203,14 @@
         }
     }
     #about {
-        margin: 250px auto;
+        margin: 100px auto;
         width: 100%;
         max-width: 1000px;
         .section-title {
             margin: 0 auto;
         }
         .section-content {
-            margin: 100px auto;
+            margin: 50px auto;
         }
         .section-person {
             .section-person-details {
@@ -154,7 +221,7 @@
         }
         .vertical-line {
             left: 0;
-            top: -300px;
+            top: -150px;
         }
     }
     #contact {
@@ -201,7 +268,7 @@
         font-size: 30px;
         text-transform: uppercase;
         letter-spacing: 2px;
-        margin: 200px auto 0;
+        margin: 100px auto 0;
         width: 100%;
         max-width: 1000px;
         transition-property: opacity transform;
@@ -213,12 +280,13 @@
         }
     }
     .section-content {
-        margin: 200px auto 150px;
+        margin: 100px auto 50px;
         width: 100%;
         max-width: 1000px;
         line-height: 35px;
         .text {
             padding-bottom: 50px;
+            box-sizing: border-box;
         }
         transition-property: opacity transform;
         transition-duration: 0.6s;
@@ -231,7 +299,7 @@
     .section-person {
         width: 100%;
         max-width: 1000px;
-        margin: 0 auto 200px;
+        margin: 0 auto 150px;
         @include flexbox();
         .section-person-image {
             width: 300px;
@@ -312,5 +380,113 @@
     }
     .invisible {
         opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    #landing {
+        #header {
+            .header-inner {
+                .desktop {
+                    display: none;
+                }
+                .mobile {
+                    display: block;
+                }
+            }
+        }
+        #main {
+            .main-top {
+                .main-top-content {
+                    .main-top-text {
+                        .header-small {
+                            font-size: 20px;
+                        }
+                        .header-medium {
+                            font-size: 25px;
+                        }
+                        .header-large {
+                            font-size: 30px;
+                        }
+                    }
+                }
+            }
+        }
+        .section-title {
+            margin: 40px auto 0;
+        }
+        .section-content {
+            margin: 40px auto 80px;
+            @include flex-direction(column);
+        }
+        .section-person {
+            margin: 0 auto 100px;
+            @include flex-direction(column);
+            .section-person-image {
+                width: 100%;
+            }
+            .section-person-details {
+                padding-left: 0;
+                width: 100%;
+                .section-person-title {
+                    margin-top: 50px;
+                }
+                .section-person-content {
+                    margin-top: 30px;
+                }
+            }
+        }
+        #project,
+        #why,
+        #sponsors,
+        #about {
+            padding: 50px;
+            box-sizing: border-box;
+            width: 100%;
+            position: relative;
+            .section-content {
+                .section-content-left,
+                .section-content-right {
+                    width: 100%;
+                }
+            }
+            .horizontal-line {
+                bottom: 50px;
+            }
+        }
+
+        #about {
+            margin: 50px auto;
+            width: 100%;
+            max-width: 1000px;
+            .section-title {
+                margin: 40px auto 0;
+            }
+            .section-content {
+                margin: 40px auto 80px;
+            }
+            .section-person {
+                .section-person-details {
+                    &.special {
+                        padding: 0;
+                    }
+                }
+            }
+            .vertical-line {
+                left: 20px;
+                top: -100px;
+            }
+        }
+
+        #contact {
+            @include flex-direction(column);
+            margin-top: 0;
+            height: calc(90vh - 69px);
+            .contact-left,
+            .contact-right {
+                width: 100%;
+                height: 50%;
+            }
+        }
     }
 }

@@ -1,11 +1,14 @@
 import React from 'react';
 import { TimelineLite } from 'greensock';
 import { Waypoint } from 'react-waypoint';
+import animateScrollTo from 'animated-scroll-to';
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      isMenuOpen: false,
+      scrollTop: 0,
       URLs: [
         `./logo-color.svg`,
         `./project.png`,
@@ -78,7 +81,26 @@ class Landing extends React.Component {
     })
   }
   componentDidMount = () => {
+    window.addEventListener('scroll', (e) => {
+      this.setState({
+        scrollTop: window.scrollY
+      })
+    });
+
     this.onEnter();
+  }
+  toggleMenu = () => {
+    document.body.style.overflow = this.state.isMenuOpen ? 'scroll' : 'hidden';
+    this.setState(state => ({
+      isMenuOpen: !state.isMenuOpen
+    }));
+  }
+  handleMenuClick = (to) => {
+    document.body.style.overflow = this.state.isMenuOpen ? 'scroll' : 'hidden';
+    this.setState({
+      isMenuOpen: false
+    });
+    animateScrollTo(to, {speed: 300});
   }
   render = () => {
     return (
@@ -86,17 +108,62 @@ class Landing extends React.Component {
         <div id={`loader`} ref={e => this.loader = e}>
           <img src={`./logo-color.svg`} alt={`Logo`} />
         </div>
-        <header id={`header`} ref={e => this.header = e}>
-          <div className={`header-inner ${this.state.mainBottom ? 'white' : ''}`}>
+        <header id={`header`} className={this.state.scrollTop !== 0
+          || this.state.isMenuOpen ? 'white' : ''} ref={e => this.header = e}>
+          <div className={`header-inner ${this.state.mainBottom ? 'white' : ''} ${this.state.isMenuOpen ? 'open' : ''}`}>
             <div className={`header-inner-left`}>
               <button className={`header-button`}></button>
             </div>
-            <div className={`header-inner-right`}>
-              <button className={`header-button`}>O projekcie</button>
-              <button className={`header-button`}>Dlaczego?</button>
-              <button className={`header-button`}>O nas</button>
-              <button className={`header-button`}>Sponsorzy</button>
-              <button className={`header-button`}>Kontakt</button>
+            <div className={`header-inner-right mobile`}>
+              <button className={`header-button`} onClick={this.toggleMenu}>
+                <div className="nav-icon">
+                  <div />
+                </div>
+              </button>
+            </div>
+            <div className={`header-inner-open-mobile`}>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.project)}
+              >O projekcie</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.why)}
+              >Dlaczego?</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.about)}
+              >O nas</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.contact)}
+              >Sponsorzy</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.contact)}
+              >Kontakt</button>
+            </div>
+            <div className={`header-inner-right desktop`}>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.project)}
+              >O projekcie</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.why)}
+              >Dlaczego?</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.about)}
+              >O nas</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.contact)}
+              >Sponsorzy</button>
+              <button
+                className={`header-button`}
+                onClick={() => this.handleMenuClick(this.contact)}
+              >Kontakt</button>
             </div>
           </div>
         </header>
@@ -118,7 +185,9 @@ class Landing extends React.Component {
                 <div className={`header-medium`} ref={e => this.mainText3 = e}>do Ciebie?</div>
               </div>
               <div className={`main-scroll-wrapper`} ref={e => this.mainScrollWrapper = e}>
-                <button className={`header-button`}>Przewiń w dół</button>
+                <button
+                  onClick={() => animateScrollTo(this.project)}
+                  className={`header-button`}>Przewiń w dół</button>
               </div>
             </div>
           </div>
@@ -135,7 +204,7 @@ class Landing extends React.Component {
             </div>
           </Waypoint>
         </section>
-        <section id='project'>
+        <section id='project' ref={e => this.project = e}>
           <Waypoint
             bottomOffset={this.state.bottomOffset}
             onEnter={() => this.setState({
@@ -190,7 +259,7 @@ class Landing extends React.Component {
             <div className={`horizontal-line ${this.state.projectHorizontalLine ? 'visible' : ''}`} ref={e => this.projectHorizontalLine = e} />
           </Waypoint>
         </section>
-        <section id='why'>
+        <section id='why' ref={e => this.why = e}>
           <Waypoint
             bottomOffset={this.state.bottomOffset}
             onEnter={() => this.setState({
@@ -244,7 +313,7 @@ class Landing extends React.Component {
             <div className={`horizontal-line ${this.state.whyHorizontalLine ? 'visible' : ''}`} ref={e => this.whyHorizontalLine = e} />
           </Waypoint>
         </section>
-        <section id='about'>
+        <section id='about' ref={e => this.about = e}>
           <div className={`section-person`}>
             <div className={`section-person-image`}>
             </div>
@@ -383,7 +452,7 @@ class Landing extends React.Component {
             </div>
           </Waypoint>
         </section >
-        <section id='sponsors'>
+        {/* <section id='sponsors'>
           <div className={`section-title`}>
             Sponsorzy
         </div>
@@ -396,8 +465,8 @@ class Landing extends React.Component {
           </div>
           </div>
           <div className={`horizontal-line`} />
-        </section>
-        <section id='contact'>
+        </section> */}
+        <section id='contact' ref={e => this.contact = e}>
           <div className={`contact-left`}>
             <div className={`title`}>
               Kontakt
