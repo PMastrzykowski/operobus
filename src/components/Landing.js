@@ -100,7 +100,10 @@ class Landing extends React.Component {
     this.setState({
       isMenuOpen: false
     });
-    animateScrollTo(to, {speed: 300});
+    animateScrollTo(to, {
+      speed: 300,
+      maxDuration: 500
+    });
   }
   render = () => {
     return (
