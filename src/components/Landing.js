@@ -2,6 +2,7 @@ import React from 'react';
 import { TimelineLite } from 'greensock';
 import { Waypoint } from 'react-waypoint';
 import animateScrollTo from 'animated-scroll-to';
+import { SocialMediaIconsReact } from 'social-media-icons-react';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -11,8 +12,8 @@ class Landing extends React.Component {
       scrollTop: 0,
       URLs: [
         `./logo-color.svg`,
-        `./project.png`,
-        `./why.png`,
+        `./project.jpg`,
+        `./why.jpg`,
         `./sponsors.png`,
         `./person-0.png`,
         `./person-1.png`,
@@ -115,7 +116,21 @@ class Landing extends React.Component {
           || this.state.isMenuOpen ? 'white' : ''} ref={e => this.header = e}>
           <div className={`header-inner ${this.state.mainBottom ? 'white' : ''} ${this.state.isMenuOpen ? 'open' : ''}`}>
             <div className={`header-inner-left`}>
-              <button className={`header-button`}></button>
+              <a href="https://www.facebook.com/operobus" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="facebook" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
+                </button>
+              </a>
+              <a href="https://www.instagram.com/operobus/" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="instagram" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
+                </button>
+              </a>
+              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="youtube-play" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
+                </button>
+              </a>
             </div>
             <div className={`header-inner-right mobile`}>
               <button className={`header-button`} onClick={this.toggleMenu}>
@@ -232,7 +247,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-left invisible ${this.state.projectSectionLeft ? 'visible' : ''}`} ref={e => this.projectSectionLeft = e}>
-                <img src={`./project.png`} alt={`O projekcie`} />
+                <img src={`./project.jpg`} alt={`O projekcie`} />
               </div>
             </Waypoint>
             <Waypoint
@@ -300,7 +315,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-right invisible ${this.state.whySectionRight ? 'visible' : ''}`} ref={e => this.whySectionRight = e}>
-                <img src={`./why.png`} alt={`Dlaczego?`} />
+                <img src={`./why.jpg`} alt={`Dlaczego?`} />
               </div>
             </Waypoint>
           </div>
@@ -480,6 +495,23 @@ class Landing extends React.Component {
             <div className={`email`}>
               biuro@operobus.pl
           </div>
+          <div className={`social-media`}>
+              <a href="https://www.facebook.com/operobus" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="facebook" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
+                </button>
+              </a>
+              <a href="https://www.instagram.com/operobus/" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="instagram" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
+                </button>
+              </a>
+              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" target="_blank">
+                <button className={`header-button`}>
+                  <SocialMediaIconsReact borderStyle="solid" icon="youtube-play" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
+                </button>
+              </a>
+            </div>
           </div>
           <div className={`contact-right`}>
             <img src={`./logo-white.svg`} alt={`Logo`} />

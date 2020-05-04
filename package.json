@@ -12,7 +12,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "react-waypoint": "^9.0.2"
+    "react-waypoint": "^9.0.2",
+    "social-media-icons-react": "^1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",
