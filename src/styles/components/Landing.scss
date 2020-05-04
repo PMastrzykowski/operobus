@@ -267,6 +267,11 @@
                 font-size: 30px;
                 color: $color-1;
                 letter-spacing: 2px;
+                .header-button {
+                    a{
+                        pointer-events: none;
+                    }
+                }
             }
         }
         .contact-right {
