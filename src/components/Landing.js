@@ -14,11 +14,10 @@ class Landing extends React.Component {
         `./logo-color.svg`,
         `./project.jpg`,
         `./why.jpg`,
-        `./sponsors.png`,
-        `./person-0.png`,
-        `./person-1.png`,
-        `./person-2.png`,
-        `./person-3.png`,
+        `./person-0.jpg`,
+        `./person-1.jpg`,
+        `./person-2.jpg`,
+        `./person-3.jpg`,
       ],
       bottomOffset: '100px',
       topOffset: '100px',
@@ -41,7 +40,13 @@ class Landing extends React.Component {
       person1visible: false,
       person2visible: false,
       person3visible: false,
-      aboutVerticalLine: false
+      aboutVerticalLine: false,
+      //What We Need
+      whatWeNeedSectionTitle: false,
+      whatWeNeedSectionContentTop: false,
+      whatWeNeedSectionContentBottom: false,
+      whatWeNeedHorizontalLine: false
+
     }
     this.enter = new TimelineLite();
   }
@@ -75,6 +80,7 @@ class Landing extends React.Component {
           .fromTo(this.mainText1, 1, { 'opacity': 0, x: -50 }, { 'opacity': 1, x: 0 }, '=-1')
           .fromTo(this.mainText2, 1, { 'opacity': 0, x: 50 }, { 'opacity': 1, x: 0 }, '=-0.8')
           .fromTo(this.mainText3, 1, { 'opacity': 0, x: -30 }, { 'opacity': 1, x: 0 }, '=-0.8')
+          .fromTo(this.mainDonateButton, 1, { 'opacity': 0, x: 30 }, { 'opacity': 1, x: 0 }, '=-0.8')
           .fromTo(this.mainBottomLogo, 0.6, { 'opacity': 0 }, { 'opacity': 1 }, '=-1')
           .fromTo(this.mainScrollWrapper, 0.6, { 'opacity': 0, y: 20 }, { 'opacity': 1, y: 0 }, '=-0.6')
           .fromTo(this.header, 0.6, { 'opacity': 0, y: -20 }, { 'opacity': 1, y: 0 }, '=-0.6')
@@ -103,7 +109,8 @@ class Landing extends React.Component {
     });
     animateScrollTo(to, {
       speed: 300,
-      maxDuration: 500
+      maxDuration: 500,
+      easing: (t) => { return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t }
     });
   }
   render = () => {
@@ -116,17 +123,17 @@ class Landing extends React.Component {
           || this.state.isMenuOpen ? 'white' : ''} ref={e => this.header = e}>
           <div className={`header-inner ${this.state.mainBottom ? 'white' : ''} ${this.state.isMenuOpen ? 'open' : ''}`}>
             <div className={`header-inner-left`}>
-              <a href="https://www.facebook.com/operobus" target="_blank">
+              <a href="https://www.facebook.com/operobus" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
                   <SocialMediaIconsReact borderStyle="solid" icon="facebook" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
                 </button>
               </a>
-              <a href="https://www.instagram.com/operobus/" target="_blank">
+              <a href="https://www.instagram.com/operobus/" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
                   <SocialMediaIconsReact borderStyle="solid" icon="instagram" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
                 </button>
               </a>
-              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" target="_blank">
+              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
                   <SocialMediaIconsReact borderStyle="solid" icon="youtube-play" backgroundColor="transparent" iconColor="#1A1A1A" iconSize="4" roundness="50%" size="40" />
                 </button>
@@ -154,8 +161,8 @@ class Landing extends React.Component {
               >O nas</button>
               <button
                 className={`header-button`}
-                onClick={() => this.handleMenuClick(this.contact)}
-              >Sponsorzy</button>
+                onClick={() => this.handleMenuClick(this.whatWeNeed)}
+              >Czego potrzebujemy?</button>
               <button
                 className={`header-button`}
                 onClick={() => this.handleMenuClick(this.contact)}
@@ -176,8 +183,8 @@ class Landing extends React.Component {
               >O nas</button>
               <button
                 className={`header-button`}
-                onClick={() => this.handleMenuClick(this.contact)}
-              >Sponsorzy</button>
+                onClick={() => this.handleMenuClick(this.whatWeNeed)}
+              >Czego potrzebujemy?</button>
               <button
                 className={`header-button`}
                 onClick={() => this.handleMenuClick(this.contact)}
@@ -201,6 +208,13 @@ class Landing extends React.Component {
                 <div className={`header-small`} ref={e => this.mainText1 = e}>A co jeśli to</div>
                 <div className={`header-large`} ref={e => this.mainText2 = e}>opera przyjedzie</div>
                 <div className={`header-medium`} ref={e => this.mainText3 = e}>do Ciebie?</div>
+                <div className={`main-button`}
+                  ref={e => this.mainDonateButton = e}
+                >
+                  <a href="https://zrzutka.pl/4jztdh" rel="noopener noreferrer" target="_blank">
+                    <button>Wesprzyj projekt</button>
+                  </a>
+                </div>
               </div>
               <div className={`main-scroll-wrapper`} ref={e => this.mainScrollWrapper = e}>
                 <button
@@ -260,8 +274,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-right text invisible ${this.state.projectSectionRight ? 'visible' : ''}`} ref={e => this.projectSectionRight = e}>
-                Projekt OperoBus jest nowatorską i nowoczesną próbą dotarcia z kulturą wysoką do miejsc i lokalnych społeczności, które nie mają sposobności do obcowania z pięknem żywej muzyki klasycznej, jej ponadczasowymi wartościami oraz emocjami, które za sobą niesie. Sam pomysł ma swoje korzenie w commedii dell’arte.
-                OperoBus będzie mobilną sceną operową, która docierać będzie, podobnie jak pierwsze trupy operowe w XVII w., do najodleglejszych zakątków prowincji, prezentując tam wysokiej próby, na żywo wykonywane koncerty i spektakle operowe, nie potrzebując do tego celu żadnego dodatkowego zaplecza. Będziemy występować na wolnym powietrzu dla zgromadzonej publiczności, szerząc kulturę i sztukę wysoką, co jest naszą misją i powołaniem.
+                Projekt OperoBus jest nowatorską i nowoczesną próbą dotarcia z kulturą wysoką do miejsc i lokalnych społeczności, które nie mają sposobności obcowania z pięknem żywej muzyki klasycznej, jej ponadczasowymi wartościami oraz emocjami, które ze sobą niesie. Pomysł ten ma swoje korzenie w commedii dell’arte. OperoBus będzie mobilną sceną operową, która docierać będzie, podobnie jak pierwsze trupy operowe w XVII w., do zakątków naszej ojczyzny, prezentując wysoce profesjonalne, wykonywane na żywo koncerty i spektakle operowe, nie potrzebując do tego celu żadnego dodatkowego zaplecza. Wydarzenia te będą odbywać się na wolnym powietrzu dla zgromadzonej publiczności, szerząc i popularyzując kulturę oraz muzykę klasyczną, co jest naszą misją i powołaniem.
           </div>
             </Waypoint>
           </div>
@@ -302,7 +315,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-left text invisible ${this.state.whySectionLeft ? 'visible' : ''}`} ref={e => this.whySectionLeft = e}>
-                Podczas wykonywania zawodu śpiewaka operowego, wielokrotnie podróżując przez Polskę doświadczałem mnogości pięknych, zrewitalizowanych i odnowionych skwerów, ryneczków, miejsc, które doskonale sprawdziłyby się jako miejsce do zaparkowania OperoBusa i zamienienia ich w naszą mobilną scenę. Czyż nie byłoby dla Państwa czymś niesamowitym doświadczenie koncertu czy spektaklu na wysokim poziomie artystycznym podczas wieczornego spaceru?
+                W trakcie wielu dotychczasowych tras koncertowych, mieliśmy okazję poznać i zobaczyć  urokliwe miejsca, pięknie zrewitalizowane centra i rynki miasteczek. Właśnie one doskonale sprawdzą się organizacyjnie, jako miejsca do parkowania Operobusa i aranżacji sceny koncertowo-spektaklowej. Czyż nie będzie dla Państwa czymś niesamowitym doświadczenie i przeżycie koncertu czy spektaklu o wysokich walorach artystycznych podczas wieczornego spaceru, w urokliwym miejscu?
           </div>
             </Waypoint>
             <Waypoint
@@ -359,7 +372,7 @@ class Landing extends React.Component {
                 })}
               >
                 <div className={`section-content invisible ${this.state.aboutSectionContent ? 'visible' : ''}`} ref={e => this.aboutSectionContent = e}>
-                  Najważniejsi są ludzie. Projekt Operobusa chcemy stworzyć wraz z grupą znakomitych artystów, przyjaciół. Przeżyliśmy razem już wiele zawodowych wyjazdów, koncertów. Prywatnie jesteśmy po prostu zgraną paczką ludzi, którzy zawsze mogą na sobie polegać.
+                  Najważniejsi są ludzie. Członkowie zespołu artystycznego Operobusa to  młodzi entuzjaści sztuki, kochający świat i ludzi. Doskonale się rozumieją, "nadają na tych samych falach", co  bardzo pomaga i sprawdza się nie tylko na scenie, ale także w życiu prywatnym.
             </div>
               </Waypoint>
             </div>
@@ -375,14 +388,14 @@ class Landing extends React.Component {
           >
             <div className={`section-person ${this.state.person0visible ? 'visible' : ''}`}>
               <div className={`section-person-image invisible`} ref={e => this.aboutPerson0image = e}>
-                <img src={`./person-0.png`} alt={`Paweł Michalczuk`} />
+                <img src={`./person-0.jpg`} alt={`Paweł Michalczuk`} />
               </div>
               <div className={`section-person-details`}>
                 <div className={`section-person-title invisible`} ref={e => this.aboutPerson0title = e}>
                   Paweł Michalczuk
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson0content = e}>
-                  bas, śpiewak młodego pokolenia, który z powodzeniem wkroczył w zawodowy świat opery. Jako 24 latek ma na swoim koncie debiuty w pierwszoplanowych partiach w Polskiej Operze Królewskiej czy Operze Bałtyckiej, a także tournee po Chinach kontynentalnych i liczne koncerty w Europie. Od trzech sezonów związany jako solista z programem edukacyjnym Spotkania z Muzyką Filharmonii Narodowej, którego esencją są wyjazdowe trasy koncertowe do mniejszych miejscowości w północno-wschodnich regionach Polski.
+                  Bas, śpiewak młodego pokolenia, który z powodzeniem wkroczył w zawodowy świat opery. Jako 24 latek ma na swoim koncie debiuty w pierwszoplanowych partiach w Polskiej Operze Królewskiej czy Operze Bałtyckiej, a także tournee po Chinach kontynentalnych i liczne koncerty w Europie. Od trzech sezonów związany jako solista z programem edukacyjnym Spotkania z Muzyką Filharmonii Narodowej, którego esencją są wyjazdowe trasy koncertowe do mniejszych miejscowości w północno-wschodnich regionach Polski.
             </div>
               </div>
             </div>
@@ -398,14 +411,14 @@ class Landing extends React.Component {
           >
             <div className={`section-person ${this.state.person1visible ? 'visible' : ''}`}>
               <div className={`section-person-image invisible`} ref={e => this.aboutPerson1image = e}>
-                <img src={`./person-1.png`} alt={`Aleksandra Klimczak`} />
+                <img src={`./person-1.jpg`} alt={`Aleksandra Klimczak`} />
               </div>
               <div className={`section-person-details`}>
                 <div className={`section-person-title invisible`} ref={e => this.aboutPerson1title = e}>
                   Aleksandra Klimczak
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson1content = e}>
-                  sopran, prezes Fundacji o.to.ja, która od 6 lat z powodzeniem realizuje misję wyprowadzania kultury i sztuki wysokiej z murów instytucji, oper i filharmonii do szerokiej publiczności, dwukrotna stypendystka Ministra Kultury i Dziedzictwa Narodowego na autorskie projekty; od sześciu lat jako solistka współpracuje z   Filharmonią Narodową w ramach programu Spotkań z Muzyką.
+                  Sopran, prezes Fundacji o.to.ja, która od 6 lat z powodzeniem realizuje misję wyprowadzania kultury i sztuki wysokiej z murów instytucji, oper i filharmonii do szerokiej publiczności, dwukrotna stypendystka Ministra Kultury i Dziedzictwa Narodowego na autorskie projekty; od sześciu lat jako solistka współpracuje z Filharmonią Narodową w ramach programu Spotkań z Muzyką.
             </div>
               </div>
             </div>
@@ -421,14 +434,14 @@ class Landing extends React.Component {
           >
             <div className={`section-person ${this.state.person2visible ? 'visible' : ''}`}>
               <div className={`section-person-image invisible`} ref={e => this.aboutPerson2image = e}>
-                <img src={`./person-2.png`} alt={`Maciej Gronek`} />
+                <img src={`./person-2.jpg`} alt={`Maciej Gronek`} />
               </div>
               <div className={`section-person-details`}>
                 <div className={`section-person-title invisible`} ref={e => this.aboutPerson2title = e}>
                   Maciej Gronek
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson2content = e}>
-                  tenor, artysta zespołu wokalnego Polskiej Opery Królewskiej. Od lat współpracuje jako solista z wieloma instytucjami kultury i organizacjami pożytku publicznego, m.in. Operą Bałtycką, Filharmonią Narodową, Radzymińską Orkiestrą Dętą, Małą Operetką Warszawską, Ursynowskim Chórem Juvenis. Na swoim koncie posiada również czynne uczestnictwo w międzynarodowych festiwalach w Bremen i Bad Wildbad.
+                  Tenor, artysta zespołu wokalnego Polskiej Opery Królewskiej. Od lat współpracuje jako solista z wieloma instytucjami kultury i organizacjami pożytku publicznego, m.in. Operą Bałtycką, Filharmonią Narodową, Radzymińską Orkiestrą Dętą, Małą Operetką Warszawską, Ursynowskim Chórem Juvenis. Na swoim koncie posiada również czynne uczestnictwo w międzynarodowych festiwalach w Bremen i Bad Wildbad.
             </div>
               </div>
             </div>
@@ -444,14 +457,14 @@ class Landing extends React.Component {
           >
             <div className={`section-person ${this.state.person3visible ? 'visible' : ''}`}>
               <div className={`section-person-image invisible`} ref={e => this.aboutPerson3image = e}>
-                <img src={`./person-3.png`} alt={`Marcin Piotr Łopacki`} />
+                <img src={`./person-3.jpg`} alt={`Marcin Piotr Łopacki`} />
               </div>
               <div className={`section-person-details`}>
                 <div className={`section-person-title invisible`} ref={e => this.aboutPerson3title = e}>
                   Marcin Piotr Łopacki
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson3content = e}>
-                  pianista, kompozytor, dyrygent. Doktor sztuk muzycznych. Wykładowca Uniwersytetu Muzycznego Fryderyka Chopina w Warszawie. Laureat licznych konkursów kompozytorskich, działacz organizacji pozarządowych. Prezes fundacji Ensemblage.
+                  Pianista, kompozytor, dyrygent. Doktor sztuk muzycznych. Wykładowca Uniwersytetu Muzycznego Fryderyka Chopina w Warszawie. Laureat licznych konkursów kompozytorskich, działacz organizacji pozarządowych. Prezes fundacji Ensemblage.
             </div>
               </div>
             </div>
@@ -470,50 +483,93 @@ class Landing extends React.Component {
             </div>
           </Waypoint>
         </section >
-        {/* <section id='sponsors'>
-          <div className={`section-title`}>
-            Sponsorzy
+        <section id='what-we-need' ref={e => this.whatWeNeed = e}>
+          <Waypoint
+            bottomOffset={this.state.bottomOffset}
+            onEnter={() => this.setState({
+              whatWeNeedSectionTitle: true
+            })}
+            onLeave={() => this.setState({
+              whatWeNeedSectionTitle: false
+            })}
+          >
+            <div className={`section-title invisible ${this.state.whatWeNeedSectionTitle ? 'visible' : ''}`} ref={e => this.whatWeNeedSectionTitle = e}>
+              Czego potrzebujemy?
         </div>
-          <div className={`section-content`}>
-            <div className={`section-content-left`}>
-              <img src={`./sponsors.png`} alt={`Dlaczego?`} />
+          </Waypoint>
+          <Waypoint
+            bottomOffset={this.state.bottomOffset}
+            onEnter={() => this.setState({
+              whatWeNeedSectionContentTop: true
+            })}
+            onLeave={() => this.setState({
+              whatWeNeedSectionContentTop: false
+            })}
+          >
+            <div className={`section-content text invisible ${this.state.whatWeNeedSectionContentTop ? 'visible' : ''}`} ref={e => this.whatWeNeedSectionContentTop = e}>
+              Prężnie działające instytucje kultury mają do dyspozycji pokaźne budżety i cały sztab administracyjny. Nasz projekt OperoBusa jest kosztochłonny tylko w początkowej fazie realizacji. Największym wyzwaniem finansowym jest zakupienie odpowiedniego samochodu dostawczego, który stanie się bazą naszego przedsięwzięcia. Nie mamy wygórowanych wymagań. Pragniemy, aby był on przede wszystkim bezpieczny, wygodny i ekologiczny. Bardzo istotną kwestią, na której nie możemy oszczędzać, jest nagłośnienie. Aby zapewnić odbiorcom możliwie najlepsze doznania akustyczne, pragniemy, aby sprzęt ten był wysokiej jakości. Nie chodzi nam o pełne nagłośnienie sceniczne, tylko o dobre kolumny aktywne, które będą energooszczędne i łatwe w transporcie. Dla zapewnienia mobilności i organizacyjnej niezależności, potrzebny prąd będziemy musieli magazynować w uprzednio przygotowanym pojeździe. Teatr, to również tworzące nastrój oświetlenie, dlatego nie możemy go pominąć w tym zestawieniu. Ważnym wyzwaniem finansowym będzie zakup stosownych kostiumów oraz prostej, mobilnej scenografii, a także dobrej jakości pianina cyfrowego z ważoną klawiaturą. Tak przygotowani możemy ruszać w stronę zachodzącego słońca i muzycznej, życiowej przygody…
             </div>
-            <div className={`section-content-right text`}>
-              Prężnie działające instytucje kultury posiadają całkiem pokaźne budżety. Projekt operobusa jest kosztochłonny tylko początkowo. Największym wyzwaniem finansowym jest zakupienie odpowiedniego samochodu dostawczego, który stanie się bazą naszego przedsięwzięcia. Nie mamy wygórowanych wymagań. Pragniemy aby był on przede wszystkim bezpieczny, wygodny, ekologiczny i w miarę możliwości ekonomiczny. Z podstawowego wyposażenia powinien posiadać klimatyzację oraz radio.
-          </div>
-          </div>
-          <div className={`horizontal-line`} />
-        </section> */}
+          </Waypoint>
+          <Waypoint
+            bottomOffset={this.state.bottomOffset}
+            onEnter={() => this.setState({
+              whatWeNeedSectionContentBottom: true
+            })}
+            onLeave={() => this.setState({
+              whatWeNeedSectionContentBottom: false
+            })}
+          >
+            <div className={`section-content donate-button invisible ${this.state.whatWeNeedSectionContentBottom ? 'visible' : ''}`} ref={e => this.whatWeNeedSectionContentBottom = e}>
+              <a href="https://zrzutka.pl/4jztdh" rel="noopener noreferrer" target="_blank">
+                <button>Wesprzyj projekt</button>
+              </a>
+            </div>
+          </Waypoint>
+          <Waypoint
+            bottomOffset={this.state.bottomOffset}
+            onEnter={() => this.setState({
+              whatWeNeedHorizontalLine: true
+            })}
+            onLeave={() => this.setState({
+              whatWeNeedHorizontalLine: false
+            })}
+          >
+            <div className={`horizontal-line ${this.state.whatWeNeedHorizontalLine ? 'visible' : ''}`} ref={e => this.whatWeNeedHorizontalLine = e} />
+          </Waypoint>
+        </section>
         <section id='contact' ref={e => this.contact = e}>
           <div className={`contact-left`}>
             <div className={`title`}>
               Kontakt
           </div>
             <div className={`phone`}>
-              +48 000 000 000
+              +48 798 670 090
           </div>
             <div className={`email`}>
-              biuro@operobus.pl
+              operobus@gmail.com
           </div>
-          <div className={`social-media`}>
-              <a href="https://www.facebook.com/operobus" target="_blank">
+            <div className={`social-media`}>
+              <a href="https://www.facebook.com/operobus" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
                   <SocialMediaIconsReact borderStyle="solid" icon="facebook" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
                 </button>
               </a>
-              <a href="https://www.instagram.com/operobus/" target="_blank">
+              <a href="https://www.instagram.com/operobus/" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
                   <SocialMediaIconsReact borderStyle="solid" icon="instagram" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
                 </button>
               </a>
-              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" target="_blank">
+              <a href="https://www.youtube.com/channel/UCs0Vn1QiPPw9PG61vzoU1Uw?view_as=subscriber" rel="noopener noreferrer" target="_blank">
                 <button className={`header-button`}>
-                  <SocialMediaIconsReact borderStyle="solid" icon="youtube-play" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
+                  <SocialMediaIconsReact borderStyle="solid" rel="noopener noreferrer" icon="youtube-play" iconColor="#ffffff" backgroundColor="#1A1A1A" iconSize="4" roundness="50%" size="60" />
                 </button>
               </a>
             </div>
           </div>
           <div className={`contact-right`}>
+            <a href="https://www.linkedin.com/in/pmastrzykowski/" rel="noopener noreferrer" target="_blank">
+              <div className={`creadores`} />
+            </a>
             <img src={`./logo-white.svg`} alt={`Logo`} />
           </div>
         </section>

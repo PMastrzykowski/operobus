@@ -35,7 +35,7 @@
             .header-inner-left {
                 .header-button {
                     padding: 10px 15px;
-                    a{
+                    a {
                         pointer-events: none;
                     }
                 }
@@ -138,6 +138,7 @@
                 height: 100%;
                 .main-top-empty {
                     height: 63px;
+                    min-height: 63px;
                 }
                 .main-top-text {
                     .header-small,
@@ -147,16 +148,29 @@
                         text-align: center;
                         text-transform: uppercase;
                         letter-spacing: 5px;
-                        margin-bottom: 15px;
+                        margin-bottom: 0.5vh;
                     }
                     .header-small {
-                        font-size: 30px;
+                        font-size: 3vh;
                     }
                     .header-medium {
-                        font-size: 40px;
+                        font-size: 4vh;
                     }
                     .header-large {
-                        font-size: 50px;
+                        font-size: 5vh;
+                    }
+                    .main-button {
+                        width: 100%;
+                        @include flexbox();
+                        @include justify-content(center);
+                        @include align-items(center);
+                        button {
+                            padding: 25px 50px;
+                            color: $color-1;
+                            background-color: $color-2;
+                            font-size: 15px;
+                            margin: 3vh auto 0;
+                        }
                     }
                 }
                 .main-scroll-wrapper {
@@ -171,7 +185,6 @@
         }
         .main-bottom {
             height: 40%;
-            // max-height: 300px;
             background-image: url("../main-bottom-background.jpg");
             background-position: center center;
             background-repeat: no-repeat;
@@ -184,9 +197,10 @@
     #project,
     #why,
     #sponsors,
+    #what-we-need,
     #about {
         box-sizing: border-box;
-        padding: 100px 50px 0;
+        padding: 100px 50px 0 0;
         width: 100%;
         position: relative;
         .section-content {
@@ -217,6 +231,7 @@
         }
     }
     #about {
+        box-sizing: content-box;
         margin: 100px auto;
         width: 100%;
         max-width: 1000px;
@@ -234,7 +249,7 @@
             }
         }
         .vertical-line {
-            left: 50px;
+            left: 0;
             top: -100px;
         }
     }
@@ -268,7 +283,7 @@
                 color: $color-1;
                 letter-spacing: 2px;
                 .header-button {
-                    a{
+                    a {
                         pointer-events: none;
                     }
                 }
@@ -283,6 +298,38 @@
             @include align-items(center);
             @include justify-content(center);
             width: 50%;
+            position: relative;
+            .creadores{
+                position: absolute;
+                width: 54px;
+                height: 47px;
+                right: 10px;
+                bottom: 10px;
+                background-image: url("../creadores-tech.svg");
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                cursor: pointer;
+            }
+        }
+    }
+    #what-we-need {
+        .section-content {
+            display: block;
+            &.donate-button {
+                margin: 0 auto;
+                button {
+                    padding: 30px 50px;
+                    color: $color-1;
+                    background-color: $color-2;
+                    font-size: 15px;
+                    margin: 20px 0 0;
+                }
+            }
+        }
+        .horizontal-line {
+            bottom: auto;
+            top: 0px;
         }
     }
     .section-title {
@@ -419,7 +466,7 @@
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1060px) {
     #landing {
         .header-button {
             padding: 15px;
@@ -450,7 +497,7 @@
         }
         #project,
         #why,
-        #sponsors,
+        #what-we-need,
         #about {
             padding: 50px;
             box-sizing: border-box;
@@ -537,7 +584,10 @@
                 }
             }
         }
-
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+        }
         #about {
             .vertical-line {
                 left: 20px;
