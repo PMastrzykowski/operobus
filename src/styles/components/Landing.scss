@@ -96,7 +96,7 @@
                 transition: opacity 0.2s ease-in;
                 .header-button {
                     width: 100%;
-                    font-size: 20px;
+                    font-size: $header-button-font-size-2;
                 }
             }
             &.white {
@@ -112,7 +112,7 @@
     .header-button {
         padding: 25px;
         box-sizing: border-box;
-        font-size: 10px;
+        font-size: $header-button-font-size;
         text-transform: uppercase;
         letter-spacing: 2px;
     }
@@ -151,13 +151,13 @@
                         margin-bottom: 0.5vh;
                     }
                     .header-small {
-                        font-size: 3vh;
+                        font-size: $header-small-font-size;
                     }
                     .header-medium {
-                        font-size: 4vh;
+                        font-size: $header-medium-font-size;
                     }
                     .header-large {
-                        font-size: 5vh;
+                        font-size: $header-large-font-size;
                     }
                     .main-button {
                         width: 100%;
@@ -168,7 +168,7 @@
                             padding: 25px 50px;
                             color: $color-1;
                             background-color: $color-2;
-                            font-size: 15px;
+                            font-size: $main-button-font-size;
                             margin: 3vh auto 0;
                         }
                     }
@@ -267,7 +267,7 @@
             @include align-items(center);
             @include justify-content(center);
             .title {
-                font-size: 35px;
+                font-size: $contact-title-font-size;
                 color: $color-1;
                 text-transform: uppercase;
                 letter-spacing: 2px;
@@ -279,7 +279,7 @@
             .social-media {
                 opacity: 0.5;
                 margin-top: 40px;
-                font-size: 30px;
+                font-size: $contact-values-font-size;
                 color: $color-1;
                 letter-spacing: 2px;
                 .header-button {
@@ -322,7 +322,7 @@
                     padding: 30px 50px;
                     color: $color-1;
                     background-color: $color-2;
-                    font-size: 15px;
+                    font-size: $main-button-font-size;
                     margin: 20px 0 0;
                 }
             }
@@ -333,7 +333,7 @@
         }
     }
     .section-title {
-        font-size: 30px;
+        font-size: $section-title-font-size;
         text-transform: uppercase;
         letter-spacing: 2px;
         margin: 100px auto 0;
@@ -383,14 +383,14 @@
             box-sizing: border-box;
             width: calc(100% - 300px);
             .section-person-title {
-                font-size: 25px;
+                font-size: $section-person-title-font-size;
                 transition-property: opacity transform;
                 transition-duration: 0.6s;
                 transform: translateX(50px);
             }
             .section-person-content {
                 margin-top: 30px;
-                font-size: 14px;
+                font-size: $section-person-content-font-size;
                 line-height: 30px;
                 transition-property: opacity transform;
                 transition-duration: 0.6s;
@@ -476,13 +476,13 @@
                 .main-top-content {
                     .main-top-text {
                         .header-small {
-                            font-size: 20px;
+                            font-size: $header-small-font-size-1;
                         }
                         .header-medium {
-                            font-size: 25px;
+                            font-size: $header-medium-font-size-1;
                         }
                         .header-large {
-                            font-size: 30px;
+                            font-size: $header-large-font-size-1;
                         }
                     }
                 }
@@ -556,7 +556,7 @@
                 .social-media {
                     opacity: 0.5;
                     margin-top: 40px;
-                    font-size: 20px;
+                    font-size: $contact-values-font-size-1;
                     color: $color-1;
                     letter-spacing: 2px;
                 }
@@ -585,7 +585,7 @@
             }
         }
         .section-title {
-            font-size: 20px;
+            font-size: $section-title-font-size-1;
             font-weight: 700;
         }
         #about {
