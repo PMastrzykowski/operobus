@@ -274,7 +274,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-right text invisible ${this.state.projectSectionRight ? 'visible' : ''}`} ref={e => this.projectSectionRight = e}>
-              Projekt OperoBus jest nowatorską i nowoczesną próbą dotarcia z kulturą wysoką do odległych miejsc naszego kraju i lokalnych społeczności, które nie mają sposobności obcowania z pięknem żywej muzyki klasycznej, jej ponadczasowymi wartościami oraz emocjami, które ze sobą niesie. Pomysł mobilnej sceny operowej czerpie ze źródeł commedii dell'arte. Podobnie jak wędrowne trupy operowe w XVII w. obieramy za cel dotarcie z{'\u00A0'}królową wszystkich sztuk do miast i miasteczek najodleglejszych zakątków Polski. Wykonywane na żywo, dla zgromadzonej na wolnym powietrzu publiczności, profesjonalne koncerty i spektakle, nie będą wymagały do realizacji żadnego dodatkowego zaplecza. Taki sposób prezentacji sztuki pozwoli szerzyć i popularyzować kulturę, muzykę klasyczną, co jest naszą misją i powołaniem.
+              Projekt OperoBus jest nowatorską i{'\u00A0'}nowoczesną próbą dotarcia z{'\u00A0'}kulturą wysoką do{'\u00A0'}odległych miejsc naszego kraju i{'\u00A0'}lokalnych społeczności, które nie{'\u00A0'}mają sposobności obcowania z{'\u00A0'}pięknem żywej muzyki klasycznej, jej{'\u00A0'}ponadczasowymi wartościami oraz emocjami, które za{'\u00A0'}sobą niesie. Pomysł mobilnej sceny operowej czerpie ze{'\u00A0'}źródeł commedii dell'arte. Podobnie jak wędrowne trupy operowe w XVII{'\u00A0'}w. obieramy za{'\u00A0'}cel dotarcie z{'\u00A0'}królową wszystkich sztuk do{'\u00A0'}miast i{'\u00A0'}miasteczek najodleglejszych zakątków Polski. Wykonywane na{'\u00A0'}żywo, dla{'\u00A0'}zgromadzonej na{'\u00A0'}wolnym powietrzu publiczności, profesjonalne koncerty i{'\u00A0'}spektakle, nie{'\u00A0'}będą wymagały do{'\u00A0'}realizacji żadnego dodatkowego zaplecza. Taki sposób prezentacji sztuki pozwoli szerzyć i{'\u00A0'}popularyzować kulturę, muzykę klasyczną, co{'\u00A0'}jest naszą misją i{'\u00A0'}powołaniem.
           </div>
             </Waypoint>
           </div>
@@ -315,7 +315,7 @@ class Landing extends React.Component {
               })}
             >
               <div className={`section-content-left text invisible ${this.state.whySectionLeft ? 'visible' : ''}`} ref={e => this.whySectionLeft = e}>
-              W trakcie wielu dotychczasowych tras koncertowych, mieliśmy okazję poznać i zobaczyć  urokliwe miejsca, pięknie zrewitalizowane centra, rynki miast i miasteczek. Właśnie one doskonale sprawdzą się jako miejsca do parkowania Operobusa i aranżacji naszej mobilnej sceny. Czyż nie byłoby czymś niesamowitym doświadczenie i przeżycie koncertu lub spektaklu o wysokich walorach artystycznych podczas wieczornego spaceru w urokliwym miejscu?
+              W trakcie wielu dotychczasowych tras koncertowych, mieliśmy okazję poznać i{'\u00A0'}zobaczyć urokliwe miejsca, pięknie zrewitalizowane centra, rynki miast i{'\u00A0'}miasteczek. Właśnie one doskonale sprawdzą się jako miejsca do parkowania Operobusa i{'\u00A0'}aranżacji naszej mobilnej sceny. Czyż nie byłoby czymś niesamowitym doświadczenie i{'\u00A0'}przeżycie koncertu lub spektaklu o{'\u00A0'}wysokich walorach artystycznych podczas wieczornego spaceru w{'\u00A0'}urokliwym miejscu?
           </div>
             </Waypoint>
             <Waypoint
@@ -372,7 +372,7 @@ class Landing extends React.Component {
                 })}
               >
                 <div className={`section-content invisible ${this.state.aboutSectionContent ? 'visible' : ''}`} ref={e => this.aboutSectionContent = e}>
-                Najważniejsi są ludzie. Członkowie zespołu artystycznego Operobusa to młodzi entuzjaści sztuki, kochający świat i ludzi. "Nadając na tych samych falach", doskonale się rozumieją,  co bardzo pomaga i sprawdza się nie tylko na scenie, ale także w życiu prywatnym.
+                Najważniejsi są ludzie. Członkowie zespołu artystycznego Operobusa to{'\u00A0'}młodzi entuzjaści sztuki, kochający świat i{'\u00A0'}ludzi. "Nadając na{'\u00A0'}tych samych falach", doskonale się{'\u00A0'}rozumieją, co bardzo pomaga i{'\u00A0'}sprawdza się nie{'\u00A0'}tylko na{'\u00A0'}scenie, ale{'\u00A0'}także w{'\u00A0'}życiu prywatnym.
             </div>
               </Waypoint>
             </div>
@@ -395,7 +395,7 @@ class Landing extends React.Component {
                   Paweł Michalczuk
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson0content = e}>
-                  Bas, śpiewak młodego pokolenia, który po starannej edukacji muzycznej z sukcesem wkroczył w zawodowy świat opery. Jako 24 latek ma na swoim koncie debiuty w pierwszoplanowych partiach w Polskiej Operze Królewskiej i Operze Bałtyckiej, a także tournee po Chinach kontynentalnych i liczne koncerty w Polsce i Europie. Od trzech sezonów związany jako solista z programem edukacyjnym Spotkania z Muzyką Filharmonii Narodowej, którego esencją są wyjazdowe trasy koncertowe do miejscowości  w północno-wschodnich regionach Polski.
+                Bas, śpiewak młodego pokolenia, który{'\u00A0'}po{'\u00A0'}starannej edukacji muzycznej z{'\u00A0'}sukcesem wkroczył w{'\u00A0'}zawodowy świat opery. Jako 24 latek ma na{'\u00A0'}swoim koncie debiuty w{'\u00A0'}pierwszoplanowych partiach w{'\u00A0'}Polskiej Operze Królewskiej i{'\u00A0'}Operze Bałtyckiej, a{'\u00A0'}także tournee po{'\u00A0'}Chinach kontynentalnych i{'\u00A0'}liczne koncerty w{'\u00A0'}Polsce i{'\u00A0'}Europie. Od trzech sezonów związany jako solista z{'\u00A0'}programem edukacyjnym Spotkania z{'\u00A0'}Muzyką Filharmonii Narodowej, którego{'\u00A0'}esencją są{'\u00A0'}wyjazdowe trasy koncertowe do{'\u00A0'}miejscowości w{'\u00A0'}północno-wschodnich regionach Polski.
             </div>
               </div>
             </div>
@@ -418,7 +418,7 @@ class Landing extends React.Component {
                   Aleksandra Klimczak
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson1content = e}>
-                  Sopran, prezes Fundacji o.to.ja, która od 6 lat z powodzeniem realizuje misję wyprowadzania kultury i sztuki wysokiej z murów instytucji, oper i filharmonii do szerokiej publiczności. Dwukrotna stypendystka Ministra Kultury i Dziedzictwa Narodowego na autorskie projekty; od sześciu lat jako solistka współpracuje z Filharmonią Narodową w ramach programu Spotkań z Muzyką.
+                Sopran, prezes Fundacji o.to.ja, która od{'\u00A0'}6 lat z{'\u00A0'}powodzeniem realizuje misję wyprowadzania kultury i{'\u00A0'}sztuki wysokiej z{'\u00A0'}murów instytucji, oper i{'\u00A0'}filharmonii do{'\u00A0'}szerokiej publiczności. Dwukrotna stypendystka Ministra Kultury i{'\u00A0'}Dziedzictwa Narodowego na{'\u00A0'}autorskie projekty; od{'\u00A0'}sześciu lat jako solistka współpracuje z{'\u00A0'}Filharmonią Narodową w{'\u00A0'}ramach programu Spotkań z{'\u00A0'}Muzyką.
             </div>
               </div>
             </div>
@@ -441,7 +441,7 @@ class Landing extends React.Component {
                   Maciej Gronek
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson2content = e}>
-                  Tenor, artysta zespołu wokalnego Polskiej Opery Królewskiej. Od lat współpracuje jako solista z wieloma instytucjami kultury i organizacjami pożytku publicznego, m.in. Operą Bałtycką, Filharmonią Narodową, Radzymińską Orkiestrą Dętą, Małą Operetką Warszawską,       Ursynowskim Chórem Juvenis. Na swoim koncie posiada również uczestnictwo w międzynarodowych festiwalach w Bremen i Bad Wildbad.
+                Tenor, artysta zespołu wokalnego Polskiej Opery Królewskiej. Od{'\u00A0'}lat współpracuje jako solista z{'\u00A0'}wieloma instytucjami kultury i{'\u00A0'}organizacjami pożytku publicznego, m.in.{'\u00A0'}Operą Bałtycką, Filharmonią Narodową, Radzymińską Orkiestrą Dętą, Małą Operetką Warszawską, Ursynowskim Chórem Juvenis. Na{'\u00A0'}swoim koncie posiada również uczestnictwo w{'\u00A0'}międzynarodowych festiwalach w{'\u00A0'}Bremen i{'\u00A0'}Bad Wildbad.
             </div>
               </div>
             </div>
@@ -464,7 +464,7 @@ class Landing extends React.Component {
                   Marcin Piotr Łopacki
             </div>
                 <div className={`section-person-content invisible`} ref={e => this.aboutPerson3content = e}>
-                  Pianista, kompozytor, dyrygent. Doktor sztuk muzycznych. Wykładowca Uniwersytetu Muzycznego Fryderyka Chopina w Warszawie. Laureat licznych konkursów kompozytorskich, działacz organizacji pozarządowych. Prezes fundacji Ensemblage.
+                Pianista, kompozytor, dyrygent. Doktor sztuk muzycznych. Wykładowca Uniwersytetu Muzycznego Fryderyka Chopina w{'\u00A0'}Warszawie. Laureat licznych konkursów kompozytorskich, działacz organizacji pozarządowych. Prezes fundacji Ensemblage.
             </div>
               </div>
             </div>
@@ -507,7 +507,7 @@ class Landing extends React.Component {
             })}
           >
             <div className={`section-content text invisible ${this.state.whatWeNeedSectionContentTop ? 'visible' : ''}`} ref={e => this.whatWeNeedSectionContentTop = e}>
-            Prężnie działające instytucje kultury mają do dyspozycji pokaźne budżety i cały sztab administracyjny. Nasz projekt OperoBusa jest kosztochłonny tylko w początkowej fazie realizacji. Największym wyzwaniem finansowym jest zakupienie odpowiedniego samochodu dostawczego, który stanie się bazą naszego przedsięwzięcia. Nie mamy wygórowanych wymagań. Pragniemy, aby był on przede wszystkim bezpieczny, wygodny i ekologiczny. Bardzo istotną kwestią, na której nie możemy oszczędzać, jest nagłośnienie. Aby zapewnić odbiorcom możliwie najlepsze doznania akustyczne, pragniemy, aby sprzęt ten był wysokiej jakości. Nie chodzi nam o pełne nagłośnienie sceniczne, tylko o dobre kolumny aktywne, które będą energooszczędne i łatwe w transporcie. Dla zapewnienia mobilności i organizacyjnej niezależności, potrzebny prąd będziemy musieli magazynować w uprzednio przygotowanym pojeździe. Teatr, to również tworzące nastrój oświetlenie, dlatego nie możemy go pominąć w tym zestawieniu. Ważnym wyzwaniem finansowym będzie zakup stosownych kostiumów oraz prostej, mobilnej scenografii, a także dobrej jakości pianina cyfrowego z ważoną klawiaturą. Tak przygotowani możemy ruszać w stronę zachodzącego słońca i muzycznej, życiowej przygody…
+            Prężnie działające instytucje kultury mają do{'\u00A0'}dyspozycji pokaźne budżety i{'\u00A0'}cały sztab administracyjny. Nasz projekt OperoBusa jest kosztochłonny tylko w{'\u00A0'}początkowej fazie realizacji. Największym wyzwaniem finansowym jest zakupienie odpowiedniego samochodu dostawczego, który{'\u00A0'}stanie się bazą naszego przedsięwzięcia. Nie mamy wygórowanych wymagań. Pragniemy, aby był{'\u00A0'}on przede wszystkim bezpieczny, wygodny i{'\u00A0'}ekologiczny. Bardzo istotną kwestią, na{'\u00A0'}której nie{'\u00A0'}możemy oszczędzać, jest nagłośnienie. Aby zapewnić odbiorcom możliwie najlepsze doznania akustyczne, pragniemy, aby sprzęt ten był wysokiej jakości. Nie chodzi nam o{'\u00A0'}pełne nagłośnienie sceniczne, tylko o{'\u00A0'}dobre kolumny aktywne, które będą energooszczędne i{'\u00A0'}łatwe w transporcie. Dla zapewnienia mobilności i{'\u00A0'}organizacyjnej niezależności, potrzebny prąd będziemy musieli magazynować w{'\u00A0'}uprzednio przygotowanym pojeździe. Teatr, to{'\u00A0'}również tworzące nastrój oświetlenie, dlatego nie{'\u00A0'}możemy go pominąć w{'\u00A0'}tym zestawieniu. Ważnym wyzwaniem finansowym będzie zakup stosownych kostiumów oraz prostej, mobilnej scenografii, a{'\u00A0'}także dobrej jakości pianina cyfrowego z{'\u00A0'}ważoną klawiaturą. Tak przygotowani możemy ruszać w{'\u00A0'}stronę zachodzącego słońca i{'\u00A0'}muzycznej, życiowej przygody…
             </div>
           </Waypoint>
           <Waypoint
